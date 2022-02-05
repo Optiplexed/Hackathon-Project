@@ -24,7 +24,7 @@ public class SwingLauncher extends JFrame
        LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 
        this.swingDisplay = new SwingDisplay(container);
-       this.canvas = new LwjglAWTCanvas(game = new ComplexModelViewer(), config);
+       this.canvas = new LwjglAWTCanvas(game = new ComplexModelViewer(swingDisplay), config);
        container.add(canvas.getCanvas(), BorderLayout.CENTER);
 
         JButton button = new JButton("Bottom");
@@ -34,12 +34,12 @@ public class SwingLauncher extends JFrame
         pack();
         setVisible(true);
         setSize(640, 400);
-
        }
    public void onButtonPress(ActionEvent e)
        {
        System.out.println(container.getWidth());
        System.out.println(container.getHeight());
+
        System.out.println(Toolkit.getDefaultToolkit().getScreenSize());
        }
     public static void launch()

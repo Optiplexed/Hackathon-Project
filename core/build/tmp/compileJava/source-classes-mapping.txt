@@ -1,2 +1,4 @@
+com/mygdx/game/IDisplay.java
+ com.mygdx.game.IDisplay
 com/mygdx/game/ComplexModelViewer.java
  com.mygdx.game.ComplexModelViewer

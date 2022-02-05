@@ -3,10 +3,11 @@ package com.mygdx.game.desktop;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.mygdx.game.IDisplay;
 
 import java.awt.*;
 
-public class SwingDisplay
+public class SwingDisplay implements IDisplay
    {
    public static final int WIDTH_SCALE;
    public static final int HEIGHT_SCALE;
@@ -29,5 +30,16 @@ public class SwingDisplay
       WIDTH_SCALE = (int)Math.round(trueWidth / awtWidth);
       HEIGHT_SCALE = (int)Math.round(trueHeight / awtHeight);
       }
+   
+   @Override
+   public int getWidthScalar()
+      {
+      return WIDTH_SCALE;
+      }
 
+   @Override
+   public int getHeightScalar()
+      {
+      return HEIGHT_SCALE;
+      }
    }
