@@ -38,6 +38,7 @@ public class SwingLauncher extends JFrame
    public void onButtonPress(ActionEvent e)
        {
        System.out.println(container.getWidth());
+       System.out.println(this.getWidth());
        System.out.println(container.getHeight());
 
        System.out.println(Toolkit.getDefaultToolkit().getScreenSize());
