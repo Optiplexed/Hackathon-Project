@@ -8,6 +8,8 @@ import com.kine.sim.ModelViewer;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 
 import static com.kine.sim.ModelViewer.cam;
 
@@ -39,6 +41,8 @@ public class SwingLauncher extends JFrame
         pack();
         setVisible(true);
         setSize(640, 400);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+
        }
    public void onButtonPress(ActionEvent e)
        {
@@ -52,9 +56,6 @@ public class SwingLauncher extends JFrame
        {
        SwingLauncher swingLauncher = new SwingLauncher();
        }
-    public static void main(String[] args)
-       {
-       SwingUtilities.invokeLater(SwingLauncher::launch);
-
-       }
+    public static void main(String[] args) {
+       SwingUtilities.invokeLater(SwingLauncher::launch);}
    }

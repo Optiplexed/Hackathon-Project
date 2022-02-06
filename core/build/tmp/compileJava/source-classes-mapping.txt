@@ -1,6 +1,6 @@
-com/mygdx/game/IDisplay.java
- com.mygdx.game.IDisplay
-com/mygdx/game/ModelViewer.java
- com.mygdx.game.ModelViewer
-com/mygdx/game/InputProcessor.java
- com.mygdx.game.InputProcessor
+com/kine/sim/HackGUI.java
+ com.kine.sim.HackGUI
+com/kine/sim/ModelViewer.java
+ com.kine.sim.ModelViewer
+com/kine/sim/IDisplay.java
+ com.kine.sim.IDisplay
