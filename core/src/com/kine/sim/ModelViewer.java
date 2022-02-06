@@ -4,21 +4,25 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
+import com.badlogic.gdx.graphics.VertexAttributes;
 import com.badlogic.gdx.graphics.g3d.*;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
 import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
+import com.badlogic.gdx.graphics.g3d.utils.MeshPartBuilder;
 import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
+import java.util.Random;
+
 public class ModelViewer extends ApplicationAdapter    
    {
 	private IDisplay display;
-	private HackGUI gui;
 	private Environment environment;
 	
    private ScreenViewport viewport;
@@ -32,7 +36,7 @@ public class ModelViewer extends ApplicationAdapter
 	float ee_angle = 0;
 
 	private AssetManager assets;
-	private Array<ModelInstance> instances = new Array<ModelInstance>();
+	private Array<ModelInstance> instances = new Array<>();
 	private ModelBuilder modelBuilder;
 	private ModelBatch modelBatch;
 	
@@ -40,6 +44,11 @@ public class ModelViewer extends ApplicationAdapter
 	protected ModelInstance linkage1Instance;
 	protected ModelInstance linkage2Instance;
 	protected ModelInstance coordsInstance;
+	protected ModelInstance gridInstance;
+
+	private final float gridMin = -50f;
+	private final float gridMax = 50f;
+	private final float scale = 8f;
    
 	private boolean loading;
 	
@@ -68,6 +77,8 @@ public class ModelViewer extends ApplicationAdapter
 		modelBuilder = new ModelBuilder();
 
 		camController = new CameraInputController(cam);
+		camController.translateUnits = 200f;
+		
 		Gdx.input.setInputProcessor(camController);
 
 		assets = new AssetManager();
@@ -78,6 +89,34 @@ public class ModelViewer extends ApplicationAdapter
 
 		loading = true;
 		}
+	private ModelInstance createGrid()
+		{
+		modelBuilder.begin();
+
+		MeshPartBuilder builder = modelBuilder.part("gridpart1", GL20.GL_LINES,
+				VertexAttributes.Usage.Position | VertexAttributes.Usage.ColorUnpacked, new Material());
+		builder.setColor(Color.YELLOW);
+
+		for(float z = gridMin; z < gridMax; z += scale)
+			{
+			for(float x = gridMin; x < gridMax; x += scale)
+				{
+				builder.line(x, 0, z, x + scale, 0, z);
+				}
+			}
+		builder = modelBuilder.part("gridpart2", GL20.GL_LINES,
+				VertexAttributes.Usage.Position | VertexAttributes.Usage.ColorUnpacked, new Material());
+
+		for(float z = gridMin; z < gridMax; z += scale)
+			{
+			for(float x = gridMin; x < gridMax; x += scale)
+				{
+				builder.line(x, 0, z, x, 0, z + scale);
+				}
+			}
+		Model gridModel = modelBuilder.end();
+		return new ModelInstance(gridModel);
+		}
 	private void doneLoading() 
 	   {
 		Model base = assets.get("base.obj", Model.class);
@@ -85,17 +124,19 @@ public class ModelViewer extends ApplicationAdapter
 	   Model linkage2 = assets.get("linkage2.obj", Model.class);
 		Model coords = assets.get("cartcoords.obj", Model.class);
 
-		baseInstance = new CustomModelInstance(base);
-	   linkage1Instance = new CustomModelInstance(linkage1);
-	   linkage2Instance = new CustomModelInstance(linkage2);
-		coordsInstance = new CustomModelInstance(coords);
-
+		baseInstance = new ModelInstance(base);
+	   linkage1Instance = new ModelInstance(linkage1);
+	   linkage2Instance = new ModelInstance(linkage2);
+		coordsInstance = new ModelInstance(coords);
+		gridInstance = createGrid();
+		
 		set_angles(0, 0, 0, 0);
 	   
 	   instances.add(baseInstance);
 	   instances.add(linkage1Instance);
 	   instances.add(linkage2Instance);
 		instances.add(coordsInstance);
+		instances.add(gridInstance);
 	   
 	   loading = false;
 	   }

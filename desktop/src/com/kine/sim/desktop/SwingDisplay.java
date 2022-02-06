@@ -9,12 +9,6 @@ public class SwingDisplay implements IDisplay
    public static final int WIDTH_SCALE;
    public static final int HEIGHT_SCALE;
 
-   private Component container;
-
-   public SwingDisplay(Component container)
-      {
-      this.container = container;
-      }
    static
       {
       double awtWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth();

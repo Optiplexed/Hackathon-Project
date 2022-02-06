@@ -27,7 +27,7 @@ public class SwingLauncher extends JFrame
 
        LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 
-       this.swingDisplay = new SwingDisplay(container);
+       this.swingDisplay = new SwingDisplay();
        this.canvas = new LwjglAWTCanvas(new ModelViewer(swingDisplay), config);
        container.add(canvas.getCanvas(), BorderLayout.CENTER);
 
