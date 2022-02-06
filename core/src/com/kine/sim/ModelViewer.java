@@ -55,6 +55,7 @@ public class ModelViewer extends ApplicationAdapter
 	public ModelViewer(IDisplay display)
 		{
       this.display = display;
+      new Thread(() -> new HackGUI(this)).start();
 		}
 	@Override
 	public void create()

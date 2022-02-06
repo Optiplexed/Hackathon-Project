@@ -1,21 +1,25 @@
 package com.kine.sim;
 
+import com.badlogic.gdx.graphics.g3d.Model;
+
 import java.util.Scanner;
 
 public class HackGUI
    {
-        public static void start()
-        {
-            HackGUI.guiText();
-            }
+   private ModelViewer viewer;
+   public HackGUI(ModelViewer viewer)
+      {
+      this.viewer = viewer;
+      guiText();
+      }
 
 
-    private static void guiText() {
+    private void guiText() {
         // Creates a new Scanner object
         Scanner myObj = new Scanner(System.in);  
         System.out.println("Enter Base angle");
 
-        // Reads user input and output
+        // Reads user input and displays output (degrees)
         String baseAngle = myObj.nextLine();  
         System.out.println("Base Angle is " + baseAngle);
 
@@ -24,12 +28,27 @@ public class HackGUI
         String jointAngle = myObj.nextLine();
         System.out.println("Joint Angle is " + jointAngle);
 
+        String secondJointAngle = myObj.nextLine();
+        System.out.println("Second Joint Angle is " + secondJointAngle);
+
+        String handAngle = myObj.nextLine();
+        System.out.println("Handle  Angle is " + handAngle);
+
         System.out.println("Would you like to enter another set of angles? [1/0]");
         Integer tryAgain = Integer.valueOf(myObj.nextLine());
+        
+        viewer.set_angles(Float.parseFloat(baseAngle),
+           Float.parseFloat(jointAngle),
+           Float.parseFloat(secondJointAngle),
+           Float.parseFloat(handAngle));
+           
+        System.out.println("Your robotic arm has been updated!");
+        
         if (tryAgain == 1) {
-            HackGUI.start();
+            this.guiText();
         }
-        else{
+        else{ 
+             
                 System.out.println("See you next time!");
         }
 
