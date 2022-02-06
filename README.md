@@ -8,7 +8,11 @@ We built our 3D environment with java using libgdx. We modeled the arm using Aut
 
 # Challenges
 
+Most of us were new to creating a GUI within libgdx, so we found it challenging to set that up within our project. Additionally, the concepts of forward kinematics were very new to us, and it was challenging for us to implement.
+
 # What We Learned
+
+We learned how to work with libgdx and how to apply knowledge of inverse kinematics to a simulated robotic arm.
 
 <h4> Controls:</h4>
   
