@@ -1,4 +1,8 @@
 com/mygdx/game/desktop/SwingDisplay.java
  com.mygdx.game.desktop.SwingDisplay
+com/mygdx/game/desktop/Hello.java
+ com.mygdx.game.desktop.Hello
+com/mygdx/game/desktop/GUI.java
+ com.mygdx.game.desktop.GUI
 com/mygdx/game/desktop/SwingLauncher.java
  com.mygdx.game.desktop.SwingLauncher

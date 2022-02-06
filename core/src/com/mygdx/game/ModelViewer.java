@@ -25,7 +25,7 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 import java.awt.*;
 
-public class ComplexModelViewer extends ApplicationAdapter    
+public class ModelViewer extends ApplicationAdapter    
    {
    private ScreenViewport viewport;
 	private PerspectiveCamera cam;
@@ -39,10 +39,12 @@ public class ComplexModelViewer extends ApplicationAdapter
 	private Model model;
 	private ModelInstance instance;
 	private IDisplay display;
+
+	protected ModelInstance baseInstance;
+	protected ModelInstance linkage1Instance;
+	protected ModelInstance linkage2Instance;
 	
-	private ShapeRenderer renderer;
-	
-	public ComplexModelViewer(IDisplay display)
+	public ModelViewer(IDisplay display)
 		{
       this.display = display;
 		}
@@ -62,38 +64,48 @@ public class ComplexModelViewer extends ApplicationAdapter
 		cam.position.set(1f, 1f, 1f);
 		cam.lookAt(0,0,0);
 		cam.near = 1f;
-		cam.far = 300f;
+		cam.far = 50_000f;
 		cam.update();
 		
 
 		ModelLoader loader = new ObjLoader();
-		model = loader.loadModel(Gdx.files.internal("ship.obj"));
+		model = loader.loadModel(Gdx.files.internal("base.obj"));
 		instance = new ModelInstance(model);
 
 		instance.transform.scale(0.1f, 0.1f, 0.1f);
 
-		camController = new CameraInputController(cam);
+		camController = new InputProcessor(cam, this);
 		Gdx.input.setInputProcessor(camController);
 
 		assets = new AssetManager();
-		assets.load("ship2.obj", Model.class);
+		assets.load("base.obj", Model.class);
+		assets.load("linkage1.obj", Model.class);
+		assets.load("linkage2.obj", Model.class);
 		loading = true;
-		
-		renderer = new ShapeRenderer();
 		}
 	private void doneLoading() 
 	   {
-	   Model ship = assets.get("ship2.obj", Model.class);
-	   ModelInstance shipInstance = new ModelInstance(ship);
-	   instances.add(shipInstance);
+		Model base = assets.get("base.obj", Model.class);
+	   Model linkage1 = assets.get("linkage1.obj", Model.class);
+	   Model linkage2 = assets.get("linkage2.obj", Model.class);
+	   
+		baseInstance = new ModelInstance(base);
+	   linkage1Instance = new ModelInstance(linkage1);
+	   linkage2Instance = new ModelInstance(linkage2);
+	   
+	   linkage2Instance.transform.setToTranslation(-7, 60, 0);
+	   linkage1Instance.transform.rotate(new Vector3(0,1,0), 180);
+	   linkage1Instance.transform.setTranslation(7, 20, 0);
+	   
+	   instances.add(baseInstance);
+	   instances.add(linkage1Instance);
+	   instances.add(linkage2Instance);
+	   
 	   loading = false;
 	   }
-float roat = 0.1f;
 	@Override
 	public void render () 
 	   {
-	   instance.transform.rotateRad(0, 0, 0, roat += 0.1f);
-	   //instance.transform.rotate(new Vector3(0, 0, 0), roat += 0.1);
 	   if (loading && assets.update())
 		   doneLoading();
 
@@ -104,16 +116,9 @@ float roat = 0.1f;
     	
 	   Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
 
-   	modelBatch.begin(viewport.getCamera());
-   	modelBatch.render(instances, environment);
-   	modelBatch.end();
-		
-		/*renderer.setProjectionMatrix(viewport.getCamera().combined);
-		renderer.setColor(Color.BLACK);
-		renderer.begin(ShapeRenderer.ShapeType.Filled);
-		renderer.setColor(Color.YELLOW);
-		renderer.rect(0, 0, 20, 20);
-		renderer.end();*/
+       modelBatch.begin(viewport.getCamera());
+       modelBatch.render(instances, environment);
+       modelBatch.end();
 	   }
 
 	@Override

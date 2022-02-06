@@ -2,7 +2,7 @@ package com.mygdx.game.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglAWTCanvas;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.mygdx.game.ComplexModelViewer;
+import com.mygdx.game.ModelViewer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +11,7 @@ import java.awt.event.ActionEvent;
 public class SwingLauncher extends JFrame
    {
    private LwjglAWTCanvas canvas;
-   private ComplexModelViewer game;
+   private ModelViewer game;
    private Container container;
    private SwingDisplay swingDisplay;
 
@@ -24,7 +24,7 @@ public class SwingLauncher extends JFrame
        LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 
        this.swingDisplay = new SwingDisplay(container);
-       this.canvas = new LwjglAWTCanvas(game = new ComplexModelViewer(swingDisplay), config);
+       this.canvas = new LwjglAWTCanvas(game = new ModelViewer(swingDisplay), config);
        container.add(canvas.getCanvas(), BorderLayout.CENTER);
 
         JButton button = new JButton("Bottom");

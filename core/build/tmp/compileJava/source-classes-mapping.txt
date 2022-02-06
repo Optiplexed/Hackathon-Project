@@ -1,4 +1,6 @@
 com/mygdx/game/IDisplay.java
  com.mygdx.game.IDisplay
-com/mygdx/game/ComplexModelViewer.java
- com.mygdx.game.ComplexModelViewer
+com/mygdx/game/ModelViewer.java
+ com.mygdx.game.ModelViewer
+com/mygdx/game/InputProcessor.java
+ com.mygdx.game.InputProcessor
