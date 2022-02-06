@@ -14,9 +14,11 @@ import com.badlogic.gdx.math.collision.Ray;
 public class CustomCamController extends CameraInputController
    {
    private float startX, startY;
+   private int selected = -1, selecting = -1;
+   
    private ModelViewer modelViewer;
    private Vector3 position = new Vector3();
-   private int selected = -1, selecting = -1;
+   
    private Material originalMaterial = new Material();
    private Material selectionMaterial;
    
@@ -33,24 +35,6 @@ public class CustomCamController extends CameraInputController
       
    public boolean keyDown(int keyCode)
       {
-      switch(keyCode)
-         {
-         case Input.Keys.L:
-            modelViewer.linkage1Instance.transform.rotate(new Vector3(1, 0, 0), 1f);
-         break;   
-         case Input.Keys.K:
-            modelViewer.linkage1Instance.transform.rotate(new Vector3(1, 0, 0), -1f);
-         break;   
-         case Input.Keys.P:
-            modelViewer.linkage2Instance.transform.rotate(new Vector3(1, 0, 0), -1f);
-         break;   
-         case Input.Keys.O:
-            modelViewer.linkage2Instance.transform.rotate(new Vector3(1, 0, 0), 1f);
-         break;
-          default:
-            
-         }
-      
       return super.keyDown(keyCode);
       }
 
