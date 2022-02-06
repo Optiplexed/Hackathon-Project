@@ -43,7 +43,10 @@ public class ModelViewer extends ApplicationAdapter
 	protected ModelInstance baseInstance;
 	protected ModelInstance linkage1Instance;
 	protected ModelInstance linkage2Instance;
-	
+	public PerspectiveCamera getCam()
+		{
+      return this.cam;
+		}
 	public ModelViewer(IDisplay display)
 		{
       this.display = display;
