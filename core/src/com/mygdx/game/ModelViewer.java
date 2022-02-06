@@ -7,14 +7,14 @@ import com.badlogic.gdx.assets.loaders.ModelLoader;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
-import com.badlogic.gdx.graphics.g3d.Environment;
-import com.badlogic.gdx.graphics.g3d.Model;
-import com.badlogic.gdx.graphics.g3d.ModelBatch;
-import com.badlogic.gdx.graphics.g3d.ModelInstance;
+import com.badlogic.gdx.graphics.VertexAttributes;
+import com.badlogic.gdx.graphics.g3d.*;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
 import com.badlogic.gdx.graphics.g3d.loader.ObjLoader;
 import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
+import com.badlogic.gdx.graphics.g3d.utils.MeshPartBuilder;
+import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import com.badlogic.gdx.graphics.glutils.HdpiUtils;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector3;
@@ -35,7 +35,8 @@ public class ModelViewer extends ApplicationAdapter
 	private Array<ModelInstance> instances = new Array<ModelInstance>();
 	private Environment environment;
 	private boolean loading;
-
+   
+   private ModelBuilder modelBuilder;
 	private Model model;
 	private ModelInstance instance;
 	private IDisplay display;
@@ -70,7 +71,7 @@ public class ModelViewer extends ApplicationAdapter
 		cam.far = 50_000f;
 		cam.update();
 		
-
+		modelBuilder = new ModelBuilder();
 		ModelLoader loader = new ObjLoader();
 		model = loader.loadModel(Gdx.files.internal("base.obj"));
 		instance = new ModelInstance(model);
@@ -106,6 +107,27 @@ public class ModelViewer extends ApplicationAdapter
 	   
 	   loading = false;
 	   }
+	/*private Model createPlaneModel()
+	   {
+	   modelBuilder.begin();
+	   modelBuilder.createRect(0, 0, 0, 10, 10, 10, 10, 10, 10,
+      modelBuilder.begin());
+	   modelBuilder.begin();
+	MeshPartBuilder bPartBuilder = modelBuilder.part("rect",
+			GL10.GL_TRIANGLES, VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal | VertexAttributes.Usage.TextureCoordinates,
+			material);
+//NOTE ON TEXTURE REGION, MAY FILL OTHER REGIONS, USE GET region.getU() and so on
+	bPartBuilder.setUVRange(u1, v1, u2, v2);
+	bPartBuilder.rect(
+			-(width*0.5f), -(height*0.5f), 0,
+			(width*0.5f), -(height*0.5f), 0,
+			(width*0.5f), (height*0.5f), 0,
+			-(width*0.5f), (height*0.5f), 0,
+			0, 0, -1);
+
+
+	return (modelBuilder.end());
+	}*/
 	@Override
 	public void render () 
 	   {

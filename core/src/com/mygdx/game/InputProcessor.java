@@ -20,7 +20,23 @@ public class InputProcessor extends CameraInputController
       
    public boolean keyDown(int keyCode)
       {
-      modelViewer.baseInstance.transform.rotate(new Vector3(0, 1, 0), 1f);
+      switch(keyCode)
+         {
+         case Input.Keys.L:
+            modelViewer.linkage1Instance.transform.rotate(new Vector3(1, 0, 0), 1f);
+         break;   
+         case Input.Keys.K:
+            modelViewer.linkage1Instance.transform.rotate(new Vector3(1, 0, 0), -1f);
+         break;   
+         case Input.Keys.P:
+            modelViewer.linkage2Instance.transform.rotate(new Vector3(1, 0, 0), -1f);
+         break;   
+         case Input.Keys.O:
+            modelViewer.linkage2Instance.transform.rotate(new Vector3(1, 0, 0), 1f);
+         break;
+          default:
+            
+         }
       
       return super.keyDown(keyCode);
       }
@@ -51,8 +67,7 @@ public class InputProcessor extends CameraInputController
       }
    @Override
    public boolean touchDragged (int screenX, int screenY, int pointer) 
-      {         
-      System.out.println("E");
+      {
       boolean result = super.touchDragged(screenX, screenY, pointer);
       if (result || this.button < 0) return result;
       final float deltaX = (screenX - startX) / Gdx.graphics.getWidth();
