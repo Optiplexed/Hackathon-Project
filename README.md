@@ -1,8 +1,6 @@
 # Hackathon-Project
 
-
-This is our Hackathon Project that we worked on to help with woman's empowerment. 
-This is a program that allows the user to input some values in the commandline and then  
+We are Freshman Virginia Tech Students participating in our first hackathon. The goal of our project is to help with woman's empowerment, especially in fields of S.T.E.M. where adanced programming tools are needed to assit with robotics work. To aid in this process, we made a program that permits the user to enter a series of joint angles and see the result of their work on a separate GUI window.
 
 <h4> Controls:</h4>
   
