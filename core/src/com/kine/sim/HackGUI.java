@@ -16,7 +16,8 @@ public class HackGUI
 
     private void guiText() {
         // Creates a new Scanner object
-        Scanner myObj = new Scanner(System.in);  
+        Scanner myObj = new Scanner(System.in);
+        System.out.println("Enter all angles in degrees");
         System.out.println("Enter Base angle");
 
         // Reads user input and displays output (degrees)
@@ -28,14 +29,16 @@ public class HackGUI
         String jointAngle = myObj.nextLine();
         System.out.println("Joint Angle is " + jointAngle);
 
+        System.out.println("Enter Second Joint Angle");
         String secondJointAngle = myObj.nextLine();
         System.out.println("Second Joint Angle is " + secondJointAngle);
 
+        System.out.println("Enter Handle Angle");
         String handAngle = myObj.nextLine();
         System.out.println("Handle  Angle is " + handAngle);
 
         System.out.println("Would you like to enter another set of angles? [1/0]");
-        Integer tryAgain = Integer.valueOf(myObj.nextLine());
+        int tryAgain = Integer.parseInt(myObj.nextLine());
         
         viewer.set_angles(Float.parseFloat(baseAngle),
            Float.parseFloat(jointAngle),

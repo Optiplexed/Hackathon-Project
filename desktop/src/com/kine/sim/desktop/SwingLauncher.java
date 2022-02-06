@@ -16,6 +16,7 @@ public class SwingLauncher extends JFrame
    private LwjglAWTCanvas canvas;
    private Container container;
    private SwingDisplay swingDisplay;
+   private HackGUI Hackgui;
 
     public SwingLauncher()
        {
@@ -41,11 +42,11 @@ public class SwingLauncher extends JFrame
        }
    public void onButtonPress(ActionEvent e)
        {
-       cam.position.set(50f, 50f, 50f);
-       cam.lookAt(0, 20, -20);
-       cam.near = 1f;
-       cam.far = 300f;
-       cam.update();
+           cam.position.set(100f, 100f, 100f);
+           cam.lookAt(0, 70, -20);
+           cam.near = 1f;
+           cam.far = 50_000f;
+           cam.update();
        }
     public static void launch()
        {
@@ -54,5 +55,6 @@ public class SwingLauncher extends JFrame
     public static void main(String[] args)
        {
        SwingUtilities.invokeLater(SwingLauncher::launch);
+
        }
    }

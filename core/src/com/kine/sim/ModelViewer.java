@@ -66,8 +66,8 @@ public class ModelViewer extends ApplicationAdapter
 		environment.add(new DirectionalLight().set(0.8f, 0.8f, 0.8f, -1f, -0.8f, -0.2f));
 
 		cam = new PerspectiveCamera(67, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		cam.position.set(1f, 1f, 1f);
-		cam.lookAt(0,0,0);
+		cam.position.set(100f, 100f, 100f);
+		cam.lookAt(0, 70, -20);
 		cam.near = 1f;
 		cam.far = 50_000f;
 		cam.update();
@@ -216,7 +216,8 @@ public class ModelViewer extends ApplicationAdapter
     	  Gdx.graphics.getHeight() * display.getHeightScalar());
     	
 	   Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
-		
+
+	   Gdx.gl.glClearColor(0,0,1,0);
 		doKeyboardInput();
 		
       modelBatch.begin(viewport.getCamera());
