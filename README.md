@@ -1,6 +1,14 @@
 # Hackathon-Project
 
-We are Freshman Virginia Tech Students participating in our first hackathon. The goal of our project is to help with woman's empowerment, especially in fields of S.T.E.M. where adanced programming tools are needed to assit with robotics work. To aid in this process, we made a program that permits the user to enter a series of joint angles and see the result of their work on a separate GUI window.
+We are Freshman Virginia Tech Students participating in our first hackathon. The aim of this project is to apply concepts of forward kinematic analysis to work out the positions and orientations of the joints of a robotic arm in Denavit-Hartenberg convention. To this end, we created a simulated 3D environment with a 3 DOF robotic arm. Our application features a GUI that allows users to enter angles for each joint on the robot arm. Alternatively, users can use keyboard input to control each joint.
+
+# Process
+
+We built our 3D environment with java using libgdx. We modeled the arm using Autodesk Fusion 360.
+
+# Challenges
+
+# What We Learned
 
 <h4> Controls:</h4>
   
