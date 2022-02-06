@@ -1,5 +1,6 @@
 package com.mygdx.game.desktop;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -19,7 +20,6 @@ public class SwingDisplay implements IDisplay
       this.container = container;
       }
    static
-   //HELLO
       {
       double awtWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth();
       double awtHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight();

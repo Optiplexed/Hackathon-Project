@@ -2,16 +2,18 @@ package com.mygdx.game.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglAWTCanvas;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+import com.mygdx.game.HackGUI;
 import com.mygdx.game.ModelViewer;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
+import static com.mygdx.game.ModelViewer.cam;
+
 public class SwingLauncher extends JFrame
    {
    private LwjglAWTCanvas canvas;
-   private ModelViewer game;
    private Container container;
    private SwingDisplay swingDisplay;
 
@@ -24,10 +26,10 @@ public class SwingLauncher extends JFrame
        LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 
        this.swingDisplay = new SwingDisplay(container);
-       this.canvas = new LwjglAWTCanvas(game = new ModelViewer(swingDisplay), config);
+       this.canvas = new LwjglAWTCanvas(new ModelViewer(swingDisplay), config);
        container.add(canvas.getCanvas(), BorderLayout.CENTER);
 
-        JButton button = new JButton("Bottom");
+        JButton button = new JButton("Home");
         container.add(button, BorderLayout.SOUTH);
 
         button.addActionListener(this::onButtonPress);
@@ -37,11 +39,11 @@ public class SwingLauncher extends JFrame
        }
    public void onButtonPress(ActionEvent e)
        {
-       System.out.println(container.getWidth());
-       System.out.println(this.getWidth());
-       System.out.println(container.getHeight());
-
-       System.out.println(Toolkit.getDefaultToolkit().getScreenSize());
+       cam.position.set(50f, 50f, 50f);
+       cam.lookAt(0, 20, -20);
+       cam.near = 1f;
+       cam.far = 300f;
+       cam.update();
        }
     public static void launch()
        {
@@ -50,5 +52,6 @@ public class SwingLauncher extends JFrame
     public static void main(String[] args)
        {
        SwingUtilities.invokeLater(SwingLauncher::launch);
+       HackGUI.start();
        }
    }
