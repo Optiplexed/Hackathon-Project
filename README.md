@@ -28,7 +28,5 @@ We are Freshman Virginia Tech Students participating in our first hackathon. The
 [RIGHT] - Moves the first joint to the right
   <br>
 [LEFT] - Moves the first join to the left
-
-<h4> GUI:<h4>
     
   
