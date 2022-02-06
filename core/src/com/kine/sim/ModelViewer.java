@@ -1,4 +1,4 @@
-package com.mygdx.game;
+package com.kine.sim;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -12,7 +12,6 @@ import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
 import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
 import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import com.badlogic.gdx.math.Matrix4;
-import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
@@ -68,7 +67,7 @@ public class ModelViewer extends ApplicationAdapter
 		
 		modelBuilder = new ModelBuilder();
 
-		camController = new CustomCamController(cam, this);
+		camController = new CameraInputController(cam);
 		Gdx.input.setInputProcessor(camController);
 
 		assets = new AssetManager();
@@ -91,9 +90,7 @@ public class ModelViewer extends ApplicationAdapter
 	   linkage2Instance = new CustomModelInstance(linkage2);
 		coordsInstance = new CustomModelInstance(coords);
 
-		linkage2Instance.transform.setToTranslation(-7, 60, 0);
-	   linkage1Instance.transform.rotate(new Vector3(0,1,0), 180);
-	   linkage1Instance.transform.setTranslation(7, 20, 0);
+		set_angles(0, 0, 0, 0);
 	   
 	   instances.add(baseInstance);
 	   instances.add(linkage1Instance);

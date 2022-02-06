@@ -1,4 +1,4 @@
-package com.mygdx.game;
+package com.kine.sim;
 
 import java.util.Scanner;
 

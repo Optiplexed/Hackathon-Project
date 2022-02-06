@@ -1,4 +1,4 @@
-package com.mygdx.game;
+package com.kine.sim;
 
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;

@@ -1,15 +1,15 @@
-package com.mygdx.game.desktop;
+package com.kine.sim.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglAWTCanvas;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.mygdx.game.HackGUI;
-import com.mygdx.game.ModelViewer;
+import com.kine.sim.HackGUI;
+import com.kine.sim.ModelViewer;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
-import static com.mygdx.game.ModelViewer.cam;
+import static com.kine.sim.ModelViewer.cam;
 
 public class SwingLauncher extends JFrame
    {
@@ -22,6 +22,8 @@ public class SwingLauncher extends JFrame
        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        container = getContentPane();
        container.setLayout(new BorderLayout());
+       
+       this.setTitle("Robotic Arm Simulation");
 
        LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 

@@ -1,10 +1,6 @@
-package com.mygdx.game.desktop;
+package com.kine.sim.desktop;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.mygdx.game.IDisplay;
+import com.kine.sim.IDisplay;
 
 import java.awt.*;
 
